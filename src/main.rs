@@ -107,7 +107,7 @@ mod c {
         let now = Instant::now();
         let state_manager = driver::Threaded::new(sender, state::Application::new(now));
 
-        debug::init(state_manager.clone());
+        // debug::init(state_manager.clone()); // disabled: zbus-1.0/nix-0.17 crash on aarch64
 
         let outputs = Outputs::new(state_manager.clone());
         let mut wayland = Box::new(Wayland::new(outputs));
