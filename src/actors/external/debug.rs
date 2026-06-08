@@ -61,7 +61,9 @@ pub fn init(sender: main::EventLoop) {
         enabled: false,
     };
     thread::spawn(move || {
-        start(mgr).unwrap();
+        if let Err(e) = start(mgr) {
+            eprintln!("Debug D-Bus interface unavailable: {}", e);
+        }
     });
 }
 
